@@ -26,8 +26,8 @@ public class FestPanel extends AbstractSchedulePanel {
         ArrayNode arrayNodeOpen = SplaScheduleUtils.getArrayNode(festOpen.getScheduleURL());
 
         // オープンとチャレンジの情報をペアとして表示
-        Iterator<JsonNode> iteratorChallenge = arrayNodeChallenge.iterator();
-        Iterator<JsonNode> iteratorOpen = arrayNodeOpen.iterator();
+        Iterator<JsonNode> iteratorChallenge = Objects.requireNonNull(arrayNodeChallenge).iterator();
+        Iterator<JsonNode> iteratorOpen = Objects.requireNonNull(arrayNodeOpen).iterator();
 
         while (iteratorChallenge.hasNext() && iteratorOpen.hasNext()) {
             JsonNode jsonNodeChallenge = iteratorChallenge.next();
