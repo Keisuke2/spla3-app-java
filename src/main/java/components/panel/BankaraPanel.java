@@ -8,7 +8,7 @@ import schedule.*;
 import javax.swing.*;
 import java.util.*;
 
-import static schedule.SplaSchedule.*;
+import static schedule.SplaScheduleUtils.*;
 
 public class BankaraPanel extends AbstractSchedulePanel {
     public BankaraPanel() {

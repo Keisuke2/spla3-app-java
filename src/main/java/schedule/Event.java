@@ -6,7 +6,7 @@ import data_src.*;
 import java.io.*;
 
 
-public class Event extends SplaSchedule {
+public class Event extends SplaScheduleUtils {
     public Event() {
         scheduleURL = ScheduleApi.event;
     }

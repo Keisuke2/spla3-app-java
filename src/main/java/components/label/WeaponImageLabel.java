@@ -21,7 +21,7 @@ public class WeaponImageLabel extends ImageLabel {
 
     private ImageIcon loadWeaponImage(String resourcePath) {
         try {
-            URL url = SplaSchedule.getURL(resourcePath);
+            URL url = SplaScheduleUtils.getURL(resourcePath);
             if (url == null) {
                 System.out.println("Incorrect URL");
                 return null;

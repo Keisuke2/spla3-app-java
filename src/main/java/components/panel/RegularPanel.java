@@ -7,7 +7,7 @@ import schedule.*;
 
 import javax.swing.*;
 
-import static schedule.SplaSchedule.*;
+import static schedule.SplaScheduleUtils.*;
 
 public class RegularPanel extends AbstractSchedulePanel {
 

@@ -33,7 +33,7 @@ public class StageImageLabel extends ImageLabel {
 
     protected ImageIcon loadStageImage(String resourcePath, int width, int height) {
         try {
-            URL url = SplaSchedule.getURL(resourcePath);
+            URL url = SplaScheduleUtils.getURL(resourcePath);
             if (url == null) {
                 System.out.println("Incorrect URL");
                 return null;

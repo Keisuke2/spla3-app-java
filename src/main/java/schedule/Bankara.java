@@ -5,7 +5,7 @@ import data_src.*;
 
 import java.io.*;
 
-public class Bankara extends SplaSchedule {
+public class Bankara extends SplaScheduleUtils {
     private final GameMode mode;
 
     public Bankara(boolean isOpen) {

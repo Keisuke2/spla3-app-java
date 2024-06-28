@@ -5,7 +5,7 @@ import data_src.*;
 
 import java.io.*;
 
-public class Regular extends SplaSchedule {
+public class Regular extends SplaScheduleUtils {
     public Regular() {
         scheduleURL = ScheduleApi.regular;
     }

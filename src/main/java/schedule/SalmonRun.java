@@ -5,7 +5,7 @@ import data_src.*;
 
 import java.io.*;
 
-public class SalmonRun extends SplaSchedule {
+public class SalmonRun extends SplaScheduleUtils {
     public SalmonRun() {
         scheduleURL = ScheduleApi.salmonRun;
     }

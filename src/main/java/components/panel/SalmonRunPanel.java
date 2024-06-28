@@ -8,7 +8,7 @@ import schedule.*;
 import javax.swing.*;
 import java.awt.*;
 
-import static schedule.SplaSchedule.*;
+import static schedule.SplaScheduleUtils.*;
 
 public class SalmonRunPanel extends AbstractSchedulePanel {
     public SalmonRunPanel() {

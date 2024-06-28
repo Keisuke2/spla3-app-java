@@ -3,7 +3,7 @@ package schedule;
 import data_src.*;
 
 
-public class Fest extends SplaSchedule {
+public class Fest extends SplaScheduleUtils {
     private final GameMode mode;
 
     public Fest(boolean isOpen) {
