@@ -2,6 +2,7 @@ package schedule.components.panel;
 
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
+import schedule.*;
 import schedule.components.label.*;
 import schedule.schedules.*;
 
@@ -18,11 +19,11 @@ public class FestPanel extends AbstractSchedulePanel {
 
     @Override
     public void createPanel() {
-        Fest scheduleChallenge = new Fest(false);
-        Fest scheduleOpen = new Fest(true);
+        Fest festChallenge = new Fest(false);
+        Fest festOpen = new Fest(true);
 
-        ArrayNode arrayNodeChallenge = scheduleChallenge.getArrayNode();
-        ArrayNode arrayNodeOpen = scheduleOpen.getArrayNode();
+        ArrayNode arrayNodeChallenge = SplaScheduleUtils.getArrayNode(festChallenge.getScheduleURL());
+        ArrayNode arrayNodeOpen = SplaScheduleUtils.getArrayNode(festOpen.getScheduleURL());
 
         // オープンとチャレンジの情報をペアとして表示
         Iterator<JsonNode> iteratorChallenge = arrayNodeChallenge.iterator();
@@ -32,8 +33,8 @@ public class FestPanel extends AbstractSchedulePanel {
             JsonNode jsonNodeChallenge = iteratorChallenge.next();
             JsonNode jsonNodeOpen = iteratorOpen.next();
 
-            setPanel(jsonNodeChallenge, scheduleChallenge.getMode(), true);
-            setPanel(jsonNodeOpen, scheduleOpen.getMode(), false);
+            setPanel(jsonNodeChallenge, festChallenge.getMode(), true);
+            setPanel(jsonNodeOpen, festOpen.getMode(), false);
         }
     }
 
