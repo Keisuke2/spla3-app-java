@@ -1,4 +1,4 @@
-package schedule.schedules;
+package schedule;
 
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;

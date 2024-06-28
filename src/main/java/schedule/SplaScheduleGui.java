@@ -1,4 +1,4 @@
-package schedule.schedules;
+package schedule;
 
 import schedule.components.button.*;
 import schedule.components.panel.*;

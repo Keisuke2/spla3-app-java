@@ -1,6 +1,6 @@
 package schedule.components.label;
 
-import schedule.schedules.*;
+import schedule.*;
 
 import javax.imageio.*;
 import javax.swing.*;

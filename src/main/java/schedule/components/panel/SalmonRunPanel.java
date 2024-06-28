@@ -2,6 +2,7 @@ package schedule.components.panel;
 
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
+import schedule.*;
 import schedule.components.label.*;
 import schedule.schedules.*;
 
@@ -9,7 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-import static schedule.schedules.SplaScheduleUtils.*;
+import static schedule.SplaScheduleUtils.*;
 
 public class SalmonRunPanel extends AbstractSchedulePanel {
     public SalmonRunPanel() {

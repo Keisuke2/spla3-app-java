@@ -1,4 +1,4 @@
-package schedule.schedules;
+package schedule;
 
 import javax.swing.*;
 

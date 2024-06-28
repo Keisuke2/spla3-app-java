@@ -8,7 +8,7 @@ import schedule.schedules.*;
 import javax.swing.*;
 import java.util.*;
 
-import static schedule.schedules.SplaScheduleUtils.*;
+import static schedule.SplaScheduleUtils.*;
 
 
 public class FestPanel extends AbstractSchedulePanel {
