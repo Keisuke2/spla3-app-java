@@ -6,6 +6,7 @@ import schedule.components.label.*;
 import schedule.schedules.*;
 
 import javax.swing.*;
+import java.util.*;
 
 import static schedule.schedules.SplaScheduleUtils.*;
 
@@ -18,9 +19,9 @@ public class RegularPanel extends AbstractSchedulePanel {
     @Override
     public void createPanel() {
         Regular regular = new Regular();
-        ArrayNode arrayNode = regular.getArrayNode();
+        ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(regular.getScheduleURL());
 
-        for (JsonNode jsonNode : arrayNode) {
+        for (JsonNode jsonNode : Objects.requireNonNull(arrayNode)) {
             // フェスマッチの時は表示しない
             if (jsonNode.get("is_fest").asBoolean()) {
                 continue;

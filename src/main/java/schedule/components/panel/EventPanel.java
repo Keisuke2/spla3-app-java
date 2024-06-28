@@ -6,6 +6,7 @@ import schedule.components.label.*;
 import schedule.schedules.*;
 
 import javax.swing.*;
+import java.util.*;
 
 import static schedule.schedules.SplaScheduleUtils.*;
 
@@ -17,13 +18,13 @@ public class EventPanel extends AbstractSchedulePanel {
     @Override
     public void createPanel() {
         Event event = new Event();
-        ArrayNode arrayNode = event.getArrayNode();
+        ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(event.getScheduleURL());
 
         JPanel timeFramePanel = new JPanel();
         timeFramePanel.setOpaque(false);
         timeFramePanel.setLayout(new BoxLayout(timeFramePanel, BoxLayout.Y_AXIS));
 
-        for (int i = 0; i < arrayNode.size(); i++) {
+        for (int i = 0; i < Objects.requireNonNull(arrayNode).size(); i++) {
             JsonNode jsonNode = arrayNode.get(i);
             JsonNode nextJsonNode;
 

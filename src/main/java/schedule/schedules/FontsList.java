@@ -55,7 +55,6 @@ public class FontsList {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
 
-        String alpha_num_text = "test_TEST_1234567890 end";
         String jp_text = "日本語　スプラトゥーン3　全角３";
         for (String font : FontsList.getAllFonts(args)) {
             JLabel label2 = new JLabel();

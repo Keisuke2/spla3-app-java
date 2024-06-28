@@ -5,17 +5,22 @@ import schedule.data_src.*;
 
 import java.io.*;
 
-public class Regular extends SplaScheduleUtils {
+public class Regular {
+    private final String scheduleURL;
+
     public Regular() {
-        scheduleURL = ScheduleApi.regular;
+        this.scheduleURL = ScheduleApi.regular;
     }
 
-    @Override
+    public String getScheduleURL() {
+        return scheduleURL;
+    }
+
     public void showSchedule() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             // JSONをURLから取得
-            JsonNode rootNode = objectMapper.readTree(getURL(scheduleURL));
+            JsonNode rootNode = objectMapper.readTree(SplaScheduleUtils.getURL(scheduleURL));
             // "results"フィールドを取得
             JsonNode resultsNode = rootNode.get("results");
             if (resultsNode != null && resultsNode.isArray()) {

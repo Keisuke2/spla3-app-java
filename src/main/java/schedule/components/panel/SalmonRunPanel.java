@@ -7,6 +7,7 @@ import schedule.schedules.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 import static schedule.schedules.SplaScheduleUtils.*;
 
@@ -18,9 +19,9 @@ public class SalmonRunPanel extends AbstractSchedulePanel {
     @Override
     public void createPanel() {
         SalmonRun salmonRun = new SalmonRun();
-        ArrayNode arrayNode = salmonRun.getArrayNode();
+        ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(salmonRun.getScheduleURL());
 
-        for (JsonNode jsonNode : arrayNode) {
+        for (JsonNode jsonNode : Objects.requireNonNull(arrayNode)) {
             JLabel blankLine = new JLabel(" ");
 
             this.add(blankLine);

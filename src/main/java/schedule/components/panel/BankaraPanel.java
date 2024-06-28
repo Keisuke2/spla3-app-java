@@ -20,12 +20,12 @@ public class BankaraPanel extends AbstractSchedulePanel {
         Bankara bankaraChallenge = new Bankara(false);
         Bankara bankaraOpen = new Bankara(true);
 
-        ArrayNode arrayNodeChallenge = bankaraChallenge.getArrayNode();
-        ArrayNode arrayNodeOpen = bankaraOpen.getArrayNode();
+        ArrayNode arrayNodeChallenge = SplaScheduleUtils.getArrayNode(bankaraChallenge.getScheduleURL());
+        ArrayNode arrayNodeOpen = SplaScheduleUtils.getArrayNode(bankaraOpen.getScheduleURL());
 
         // オープンとチャレンジの情報をペアとして表示
-        Iterator<JsonNode> iteratorChallenge = arrayNodeChallenge.iterator();
-        Iterator<JsonNode> iteratorOpen = arrayNodeOpen.iterator();
+        Iterator<JsonNode> iteratorChallenge = Objects.requireNonNull(arrayNodeChallenge).iterator();
+        Iterator<JsonNode> iteratorOpen = Objects.requireNonNull(arrayNodeOpen).iterator();
 
         while (iteratorChallenge.hasNext() && iteratorOpen.hasNext()) {
             JsonNode jsonNodeChallenge = iteratorChallenge.next();

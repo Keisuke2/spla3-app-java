@@ -8,8 +8,7 @@ import java.net.*;
 import java.time.*;
 import java.time.format.*;
 
-public abstract class SplaScheduleUtils {
-    protected String scheduleURL = "";
+public class SplaScheduleUtils {
 
     public static URL getURL(String scheduleURL) {
         try {
@@ -22,7 +21,6 @@ public abstract class SplaScheduleUtils {
     }
 
     public static String getFormattedDateTime(String originalStartDateTime, String originalEndDateTime) {
-
         // 日付と時刻を解析
         ZonedDateTime startZonedDateTime = ZonedDateTime.parse(originalStartDateTime);
         ZonedDateTime endZonedDateTime = ZonedDateTime.parse(originalEndDateTime);
@@ -50,9 +48,7 @@ public abstract class SplaScheduleUtils {
         }
     }
 
-    public abstract void showSchedule();
-
-    public ArrayNode getArrayNode() {
+    public static ArrayNode getArrayNode(String scheduleURL) {
         ObjectMapper objectMapper = new ObjectMapper();
         ArrayNode arrayNode = objectMapper.createArrayNode();
         try {
@@ -62,7 +58,6 @@ public abstract class SplaScheduleUtils {
             for (JsonNode resultNode : resultsNode) {
                 arrayNode.add(resultNode);
             }
-
             return arrayNode;
         } catch (IOException e) {
             System.out.println(e.getMessage());
