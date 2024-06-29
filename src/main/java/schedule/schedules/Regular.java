@@ -1,10 +1,9 @@
 package schedule.schedules;
 
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.node.*;
 import schedule.*;
 import schedule.data_src.*;
-
-import java.io.*;
 
 public class Regular {
     private final String scheduleURL;
@@ -18,38 +17,32 @@ public class Regular {
     }
 
     public void showSchedule() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            // JSONをURLから取得
-            JsonNode rootNode = objectMapper.readTree(SplaScheduleUtils.getURL(scheduleURL));
-            // "results"フィールドを取得
-            JsonNode resultsNode = rootNode.get("results");
-            if (resultsNode != null && resultsNode.isArray()) {
-                // 各結果要素についてループ
-                for (JsonNode resultNode : resultsNode) {
-                    String startTime = resultNode.get("start_time").asText();
-                    String endTime = resultNode.get("end_time").asText();
-                    String ruleName = resultNode.get("rule").get("name").asText();
+        // JSONをURLから取得
+        ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(this.scheduleURL);
 
-                    System.out.println("開始時間: " + startTime);
-                    System.out.println("終了時間: " + endTime);
-                    System.out.println("ルール名: " + ruleName);
+        if (arrayNode != null && arrayNode.isArray()) {
+            // 各結果要素についてループ
+            for (JsonNode jsonNode : arrayNode) {
+                String startTime = jsonNode.get("start_time").asText();
+                String endTime = jsonNode.get("end_time").asText();
+                String ruleName = jsonNode.get("rule").get("name").asText();
 
-                    JsonNode stagesNode = resultNode.get("stages");
-                    if (stagesNode != null && stagesNode.isArray()) {
-                        // 各ステージについてループ
-                        for (JsonNode stageNode : stagesNode) {
-                            String stageName = stageNode.get("name").asText();
-                            System.out.println("ステージ名: " + stageName);
-                        }
+                System.out.println("開始時間: " + startTime);
+                System.out.println("終了時間: " + endTime);
+                System.out.println("ルール名: " + ruleName);
+
+                JsonNode stagesNode = jsonNode.get("stages");
+                if (stagesNode != null && stagesNode.isArray()) {
+                    // 各ステージについてループ
+                    for (JsonNode stageNode : stagesNode) {
+                        String stageName = stageNode.get("name").asText();
+                        System.out.println("ステージ名: " + stageName);
                     }
-                    System.out.println();
                 }
-            } else {
-                System.out.println("結果情報が見つかりませんでした。");
+                System.out.println();
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } else {
+            System.out.println("結果情報が見つかりませんでした。");
         }
     }
 }
