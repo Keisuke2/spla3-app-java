@@ -40,7 +40,7 @@ public class SplaScheduleGui extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setLayout(new BorderLayout());
-        getContentPane().setBackground(Color.LIGHT_GRAY);
+//        getContentPane().setBackground(Color.LIGHT_GRAY);
 
         initButtons();
         initPanels();
