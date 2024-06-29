@@ -1,9 +1,8 @@
 package schedule.components.panel;
 
-import javax.swing.*;
 import java.awt.*;
 
-public class RoundedPanel extends JPanel {
+public class RoundedPanel extends ShapePanel {
     private final int cornerRadius;
 
     public RoundedPanel(int radius) {
@@ -13,7 +12,7 @@ public class RoundedPanel extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void drawShape(Graphics g) {
         super.paintComponent(g);
         Dimension arcs = new Dimension(cornerRadius, cornerRadius);
         int width = getWidth();
