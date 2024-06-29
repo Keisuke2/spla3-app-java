@@ -10,8 +10,8 @@ import java.io.*;
 import java.net.*;
 
 public class WeaponImageLabel extends ImageLabel {
-    private final int width = 60;
-    private final int height = 60;
+    private final int width = 70;
+    private final int height = 70;
 
     public WeaponImageLabel(String resourcePass) {
         super(null);

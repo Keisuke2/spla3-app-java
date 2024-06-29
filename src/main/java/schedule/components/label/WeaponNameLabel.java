@@ -5,6 +5,6 @@ import java.awt.*;
 public class WeaponNameLabel extends TextLabel {
     public WeaponNameLabel(String text) {
         super(text);
-        setFont(new Font("HiraMaruProN-W4", Font.PLAIN, 12));
+        setFont(new Font("HiraMaruProN-W4", Font.PLAIN, 10));
     }
 }
