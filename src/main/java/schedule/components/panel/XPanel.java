@@ -26,10 +26,10 @@ public class XPanel extends AbstractSchedulePanel {
             if (jsonNode.get("is_fest").asBoolean()) {
                 continue;
             }
-
             JLabel blankLine = new JLabel(" ");
 
-            this.add(blankLine);
+            SchedulePanel schedulePanel = new SchedulePanel();
+            schedulePanel.add(blankLine);
 
             String startTime = jsonNode.get("start_time").asText();
             String endTime = jsonNode.get("end_time").asText();
@@ -41,8 +41,8 @@ public class XPanel extends AbstractSchedulePanel {
             JLabel stageImageLabel;
             JLabel ruleLabel = new RuleLabel(rule);
 
-            this.add(timeFrameLabel);
-            this.add(ruleLabel);
+            schedulePanel.add(timeFrameLabel);
+            schedulePanel.add(ruleLabel);
 
             JPanel stageSetPanel = new StageSetPanel();
 
@@ -59,7 +59,8 @@ public class XPanel extends AbstractSchedulePanel {
                 stagePanel.add(stageImageLabel);
                 stageSetPanel.add(stagePanel);
             }
-            this.add(stageSetPanel);
+            schedulePanel.add(stageSetPanel);
+            this.add(schedulePanel);
         }
     }
 }

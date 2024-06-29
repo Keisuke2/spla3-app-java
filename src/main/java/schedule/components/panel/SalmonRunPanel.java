@@ -25,7 +25,8 @@ public class SalmonRunPanel extends AbstractSchedulePanel {
         for (JsonNode jsonNode : Objects.requireNonNull(arrayNode)) {
             JLabel blankLine = new JLabel(" ");
 
-            this.add(blankLine);
+            SchedulePanel schedulePanel = new SchedulePanel();
+            schedulePanel.add(blankLine);
 
             String startTime = jsonNode.get("start_time").asText();
             String endTime = jsonNode.get("end_time").asText();
@@ -45,7 +46,7 @@ public class SalmonRunPanel extends AbstractSchedulePanel {
 
             JPanel weaponsPanel = new JPanel();
             weaponsPanel.setOpaque(false);
-            weaponsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+            weaponsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 0));
 
             for (JsonNode weaponNode : jsonNode.get("weapons")) {
                 String weaponName = weaponNode.get("name").asText();
@@ -64,9 +65,10 @@ public class SalmonRunPanel extends AbstractSchedulePanel {
                 weaponsPanel.add(weaponPanel);
             }
 
-            this.add(timeFrameLabel);
-            this.add(stagePanel);
-            this.add(weaponsPanel);
+            schedulePanel.add(timeFrameLabel);
+            schedulePanel.add(stagePanel);
+            schedulePanel.add(weaponsPanel);
+            this.add(schedulePanel);
         }
     }
 }

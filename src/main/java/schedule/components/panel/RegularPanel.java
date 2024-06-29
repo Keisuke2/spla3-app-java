@@ -27,10 +27,10 @@ public class RegularPanel extends AbstractSchedulePanel {
             if (jsonNode.get("is_fest").asBoolean()) {
                 continue;
             }
-
             JLabel blankLine = new JLabel(" ");
 
-            this.add(blankLine);
+            SchedulePanel schedulePanel = new SchedulePanel();
+            schedulePanel.add(blankLine);
 
             String startTime = jsonNode.get("start_time").asText();
             String endTime = jsonNode.get("end_time").asText();
@@ -40,7 +40,7 @@ public class RegularPanel extends AbstractSchedulePanel {
             JLabel stageNameLabel;
             JLabel stageImageLabel;
 
-            this.add(timeFrameLabel);
+            schedulePanel.add(timeFrameLabel);
 
             JPanel stageSetPanel = new StageSetPanel();
 
@@ -56,7 +56,8 @@ public class RegularPanel extends AbstractSchedulePanel {
                 stagePanel.add(stageImageLabel);
                 stageSetPanel.add(stagePanel);
             }
-            this.add(stageSetPanel);
+            schedulePanel.add(stageSetPanel);
+            this.add(schedulePanel);
         }
     }
 }

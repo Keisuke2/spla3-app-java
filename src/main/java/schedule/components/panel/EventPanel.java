@@ -46,9 +46,11 @@ public class EventPanel extends AbstractSchedulePanel {
 
             timeFramePanel.add(timeFrameLabel);
 
+            SchedulePanel schedulePanel = new SchedulePanel();
+
             if (!eventId.equals(nextEventId)) {
                 JLabel blankLine = new JLabel(" ");
-                this.add(blankLine);
+                schedulePanel.add(blankLine);
 
                 JPanel infoPanel = new JPanel();
                 infoPanel.setOpaque(false);
@@ -85,9 +87,11 @@ public class EventPanel extends AbstractSchedulePanel {
                     stageSetPanel.add(stagePanel);
                 }
 
-                this.add(infoPanel);
-                this.add(stageSetPanel);
-                this.add(timeFramePanel);
+
+                schedulePanel.add(infoPanel);
+                schedulePanel.add(stageSetPanel);
+                schedulePanel.add(timeFramePanel);
+                this.add(schedulePanel);
 
                 timeFramePanel = new JPanel();
                 timeFramePanel.setOpaque(false);
