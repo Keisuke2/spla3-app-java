@@ -28,23 +28,26 @@ public class SplaScheduleUtils {
         LocalDateTime startLocalDateTime = startZonedDateTime.toLocalDateTime();
         LocalDateTime endLocalDateTime = endZonedDateTime.toLocalDateTime();
 
-        String formattedStartDateTime;
-        String formattedEndDateTime;
+        DateTimeFormatter dateFormatter;
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm"); // 先頭の0を消す
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M/d H:mm"); // 先頭の0を消す
 
         // 年が同じ場合は年を省略する
         if (startLocalDateTime.getYear() == LocalDateTime.now().getYear()) {
-            formattedStartDateTime = startLocalDateTime.format(DateTimeFormatter.ofPattern("MM-dd HH:mm"));
-            formattedEndDateTime = endLocalDateTime.format(DateTimeFormatter.ofPattern("HH:mm"));
+            dateFormatter = DateTimeFormatter.ofPattern("M/d"); // 先頭の0を消す
         } else {
-            formattedStartDateTime = startLocalDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-            formattedEndDateTime = endLocalDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+            dateFormatter = DateTimeFormatter.ofPattern("yyyy/M/d"); // 先頭の0を消す
         }
+
+        String formattedStartDateTime = startLocalDateTime.format(dateTimeFormatter);
+        String formattedEndDateTime = endLocalDateTime.format(timeFormatter);
 
         // 日付が同じ場合は日付を省略する
         if (startLocalDateTime.toLocalDate().isEqual(endLocalDateTime.toLocalDate())) {
-            return formattedStartDateTime + " ~ " + formattedEndDateTime;
+            return formattedStartDateTime + " –> " + formattedEndDateTime;
         } else {
-            return formattedStartDateTime + " ~ " + endLocalDateTime.format(DateTimeFormatter.ofPattern("MM-dd HH:mm"));
+            String formattedEndDate = endLocalDateTime.format(dateFormatter);
+            return formattedStartDateTime + " –> " + formattedEndDate + " " + formattedEndDateTime;
         }
     }
 
