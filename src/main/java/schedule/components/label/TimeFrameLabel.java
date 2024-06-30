@@ -5,6 +5,6 @@ import java.awt.*;
 public class TimeFrameLabel extends TextLabel {
     public TimeFrameLabel(String text) {
         super(text);
-        setFont(new Font("HiraMaruProN-W4", Font.PLAIN, 14));
+        setFont(new Font("HiraMaruProN-W4", Font.PLAIN, 16));
     }
 }
