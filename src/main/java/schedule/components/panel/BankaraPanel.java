@@ -12,6 +12,7 @@ import java.util.*;
 import static schedule.SplaScheduleUtils.*;
 
 public class BankaraPanel extends AbstractSchedulePanel {
+
     public BankaraPanel() {
         super();
     }
@@ -32,19 +33,23 @@ public class BankaraPanel extends AbstractSchedulePanel {
             JsonNode jsonNodeChallenge = iteratorChallenge.next();
             JsonNode jsonNodeOpen = iteratorOpen.next();
 
-            setPanel(jsonNodeChallenge, bankaraChallenge.getMode(), true);
-            setPanel(jsonNodeOpen, bankaraOpen.getMode(), false);
+            SchedulePanel schedulePanel = new SchedulePanel();
+
+            setPanel(jsonNodeChallenge, bankaraChallenge.getMode(), true, schedulePanel);
+            setPanel(jsonNodeOpen, bankaraOpen.getMode(), false, schedulePanel);
+
+            this.add(schedulePanel);
         }
     }
 
-    private void setPanel(JsonNode jsonNode, String gameMode, boolean isFirstCalledMethod) {
+    private void setPanel(JsonNode jsonNode, String gameMode, boolean isFirstCalledMethod, JPanel schedulePanel) {
         // フェスマッチの時は表示しない
         if (jsonNode.get("is_fest").asBoolean()) {
             return;
         }
 
         JLabel blankLine = new JLabel(" ");
-        this.add(blankLine);
+        schedulePanel.add(blankLine);
 
         if (isFirstCalledMethod) {
             String startTime = jsonNode.get("start_time").asText();
@@ -53,7 +58,7 @@ public class BankaraPanel extends AbstractSchedulePanel {
 
             JLabel timeFrameLabel = new TimeFrameLabel(formattedTimeFrame);
 
-            this.add(timeFrameLabel);
+            schedulePanel.add(timeFrameLabel);
         }
 
         String rule = jsonNode.get("rule").get("name").asText();
@@ -61,7 +66,7 @@ public class BankaraPanel extends AbstractSchedulePanel {
 
         JLabel ruleLabel = new RuleLabel(rule + gameMode);
 
-        this.add(ruleLabel);
+        schedulePanel.add(ruleLabel);
 
         JPanel stageSetPanel = new StageSetPanel();
 
@@ -78,6 +83,6 @@ public class BankaraPanel extends AbstractSchedulePanel {
             stageSetPanel.add(stagePanel);
         }
 
-        this.add(stageSetPanel);
+        schedulePanel.add(stageSetPanel);
     }
 }
