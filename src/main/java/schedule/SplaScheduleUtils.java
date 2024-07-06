@@ -8,8 +8,17 @@ import java.net.*;
 import java.time.*;
 import java.time.format.*;
 
+/**
+ * Splatoon 3 のスケジュールを取得したり、時間をフォーマットしたりするためのユーティリティクラスです。
+ */
 public class SplaScheduleUtils {
 
+    /**
+     * URLオブジェクトを取得します。
+     *
+     * @param scheduleURL スケジュールのURL
+     * @return URLオブジェクト
+     */
     public static URL getURL(String scheduleURL) {
         try {
             URI uri = new URI(scheduleURL);
@@ -20,6 +29,13 @@ public class SplaScheduleUtils {
         return null;
     }
 
+    /**
+     * 日付と時刻をフォーマットします。
+     *
+     * @param originalStartDateTime 開始日時
+     * @param originalEndDateTime   終了日時
+     * @return フォーマットされた日付と時刻の文字列
+     */
     public static String getFormattedDateTime(String originalStartDateTime, String originalEndDateTime) {
         // 日付と時刻を解析
         ZonedDateTime startZonedDateTime = ZonedDateTime.parse(originalStartDateTime);
@@ -51,6 +67,12 @@ public class SplaScheduleUtils {
         }
     }
 
+    /**
+     * JSONデータを取得し、ArrayNodeとして返します。
+     *
+     * @param scheduleURL スケジュールのURL
+     * @return ArrayNodeオブジェクト
+     */
     public static ArrayNode getArrayNode(String scheduleURL) {
         ObjectMapper objectMapper = new ObjectMapper();
         ArrayNode arrayNode = objectMapper.createArrayNode();

@@ -8,14 +8,14 @@ import schedule.data_src.*;
 /**
  * フェスマッチのスケジュールを管理するクラスです。
  */
-public class Fest extends SplaScheduleUtils {
+public class Fest {
     private final GameMode mode;  // ゲームモード（オープンまたはチャレンジ）
     private final String scheduleURL;  // スケジュール取得用URL
 
     /**
      * フェスマッチのインスタンスを作成します。
      *
-     * @param isOpen オープンモードかどうかを指定します。
+     * @param isOpen オープンかどうかを指定します。
      */
     public Fest(boolean isOpen) {
         this.mode = isOpen ? GameMode.OPEN : GameMode.CHALLENGE;
