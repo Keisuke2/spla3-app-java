@@ -5,6 +5,8 @@ import schedule.components.label.*;
 /**
  * レギュラーマッチ（ナワバリバトル）のフッターパネルを表します。
  * このクラスは {@link AbstractFooterPanel} を継承し、パネルの内容を設定します。
+ *
+ * @see AbstractFooterPanel
  */
 public class RegularFooterPanel extends AbstractFooterPanel {
 
