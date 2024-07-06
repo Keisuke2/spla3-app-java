@@ -11,16 +11,30 @@ import java.util.*;
 
 import static schedule.SplaScheduleUtils.*;
 
-public class RegularPanel extends AbstractSchedulePanel {
+/**
+ * Xマッチのスケジュール情報を表示するパネルクラスです。
+ * このクラスは {@link AbstractMainPanel} を継承し、
+ * Xマッチのスケジュールを表示します。
+ *
+ * @see AbstractMainPanel
+ */
+public class XMainPanel extends AbstractMainPanel {
 
-    public RegularPanel() {
+    /**
+     * コンストラクタ。
+     * スーパークラスのコンストラクタを呼び出し、パネルの初期化を行います。
+     */
+    public XMainPanel() {
         super();
     }
 
+    /**
+     * Xマッチのスケジュールパネルを作成します。
+     */
     @Override
     public void createPanel() {
-        Regular regular = new Regular();
-        ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(regular.getScheduleURL());
+        X x = new X();
+        ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(x.getScheduleURL());
 
         for (JsonNode jsonNode : Objects.requireNonNull(arrayNode)) {
             // フェスマッチの時は表示しない
@@ -35,13 +49,17 @@ public class RegularPanel extends AbstractSchedulePanel {
             String startTime = jsonNode.get("start_time").asText();
             String endTime = jsonNode.get("end_time").asText();
             String formattedTimeFrame = getFormattedDateTime(startTime, endTime);
+            String rule = jsonNode.get("rule").get("name").asText();
 
             JLabel timeFrameLabel = new TimeFrameLabel(formattedTimeFrame);
             JLabel stageNameLabel;
             JLabel stageImageLabel;
+            JLabel ruleLabel = new RuleLabel(rule);
 
             schedulePanel.add(timeFrameLabel);
+            schedulePanel.add(ruleLabel);
 
+            // ステージ情報の設定
             JPanel stageSetPanel = new StageSetPanel();
 
             for (JsonNode stages : jsonNode.get("stages")) {
@@ -52,6 +70,7 @@ public class RegularPanel extends AbstractSchedulePanel {
                 stageImageLabel = new StageImageLabel(imageURL);
 
                 JPanel stagePanel = new StagePanel();
+
                 stagePanel.add(stageNameLabel);
                 stagePanel.add(stageImageLabel);
                 stageSetPanel.add(stagePanel);

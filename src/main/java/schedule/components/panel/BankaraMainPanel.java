@@ -11,12 +11,27 @@ import java.util.*;
 
 import static schedule.SplaScheduleUtils.*;
 
-public class BankaraPanel extends AbstractSchedulePanel {
+/**
+ * バンカラマッチのスケジュール情報を表示するパネルクラスです。
+ * このクラスは {@link AbstractMainPanel} を継承し、
+ * バンカラマッチのチャレンジとオープンのスケジュールを表示します。
+ *
+ * @see AbstractMainPanel
+ */
+public class BankaraMainPanel extends AbstractMainPanel {
 
-    public BankaraPanel() {
+    /**
+     * コンストラクタ。
+     * スーパークラスのコンストラクタを呼び出し、パネルの初期化を行います。
+     */
+    public BankaraMainPanel() {
         super();
     }
 
+    /**
+     * バンカラマッチのスケジュールパネルを作成します。
+     * チャレンジとオープンの両方のスケジュールを取得し、表示します。
+     */
     @Override
     public void createPanel() {
         Bankara bankaraChallenge = new Bankara(false);
@@ -25,10 +40,10 @@ public class BankaraPanel extends AbstractSchedulePanel {
         ArrayNode arrayNodeChallenge = SplaScheduleUtils.getArrayNode(bankaraChallenge.getScheduleURL());
         ArrayNode arrayNodeOpen = SplaScheduleUtils.getArrayNode(bankaraOpen.getScheduleURL());
 
-        // オープンとチャレンジの情報をペアとして表示
         Iterator<JsonNode> iteratorChallenge = Objects.requireNonNull(arrayNodeChallenge).iterator();
         Iterator<JsonNode> iteratorOpen = Objects.requireNonNull(arrayNodeOpen).iterator();
 
+        // オープンとチャレンジの情報をペアとして表示
         while (iteratorChallenge.hasNext() && iteratorOpen.hasNext()) {
             JsonNode jsonNodeChallenge = iteratorChallenge.next();
             JsonNode jsonNodeOpen = iteratorOpen.next();
@@ -42,6 +57,15 @@ public class BankaraPanel extends AbstractSchedulePanel {
         }
     }
 
+    /**
+     * 個別のスケジュールパネルを設定します。
+     * フェスマッチ時は表示せず、時間枠、ルール、ステージ情報を設定します。
+     *
+     * @param jsonNode            JsonNodeオブジェクト（スケジュール情報を含む）
+     * @param gameMode            ゲームモード（チャレンジまたはオープン）
+     * @param isFirstCalledMethod 最初に呼び出されたメソッドかどうか
+     * @param schedulePanel       設定対象のスケジュールパネル
+     */
     private void setPanel(JsonNode jsonNode, String gameMode, boolean isFirstCalledMethod, JPanel schedulePanel) {
         // フェスマッチの時は表示しない
         if (jsonNode.get("is_fest").asBoolean()) {
@@ -51,23 +75,24 @@ public class BankaraPanel extends AbstractSchedulePanel {
         JLabel blankLine = new JLabel(" ");
         schedulePanel.add(blankLine);
 
+        // 時間枠の設定（最初の呼び出し時のみ）
         if (isFirstCalledMethod) {
             String startTime = jsonNode.get("start_time").asText();
             String endTime = jsonNode.get("end_time").asText();
             String formattedTimeFrame = getFormattedDateTime(startTime, endTime);
 
             JLabel timeFrameLabel = new TimeFrameLabel(formattedTimeFrame);
-
             schedulePanel.add(timeFrameLabel);
         }
 
+        // ルールとゲームモードの設定
         String rule = jsonNode.get("rule").get("name").asText();
         gameMode = "(" + gameMode + ")";
 
         JLabel ruleLabel = new RuleLabel(rule + gameMode);
-
         schedulePanel.add(ruleLabel);
 
+        // ステージ情報の設定
         JPanel stageSetPanel = new StageSetPanel();
 
         for (JsonNode stageNode : jsonNode.get("stages")) {

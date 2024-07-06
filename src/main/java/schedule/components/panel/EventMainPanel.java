@@ -11,16 +11,32 @@ import java.util.*;
 
 import static schedule.SplaScheduleUtils.*;
 
-public class EventPanel extends AbstractSchedulePanel {
-    public EventPanel() {
+/**
+ * イベントマッチのスケジュール情報を表示するパネルクラスです。
+ * このクラスは {@link AbstractMainPanel} を継承し、
+ * イベントマッチのスケジュールを表示します。
+ *
+ * @see AbstractMainPanel
+ */
+public class EventMainPanel extends AbstractMainPanel {
+
+    /**
+     * コンストラクタ。
+     * スーパークラスのコンストラクタを呼び出し、パネルの初期化を行います。
+     */
+    public EventMainPanel() {
         super();
     }
 
+    /**
+     * イベントマッチのスケジュールパネルを作成します。
+     */
     @Override
     public void createPanel() {
         Event event = new Event();
         ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(event.getScheduleURL());
 
+        // 時間枠をまとめて表示するパネルを作成
         JPanel timeFramePanel = new JPanel();
         timeFramePanel.setOpaque(false);
         timeFramePanel.setLayout(new BoxLayout(timeFramePanel, BoxLayout.Y_AXIS));
@@ -42,16 +58,18 @@ public class EventPanel extends AbstractSchedulePanel {
             String endTime = jsonNode.get("end_time").asText();
             String formattedTimeFrame = getFormattedDateTime(startTime, endTime);
 
+            // 時間枠をパネルに追加（イベントIDが同じ時）
             JLabel timeFrameLabel = new TimeFrameLabel(formattedTimeFrame);
-
             timeFramePanel.add(timeFrameLabel);
 
             SchedulePanel schedulePanel = new SchedulePanel();
 
+            // イベントIDが異なる場合は新しいスケジュールパネルを作成
             if (!eventId.equals(nextEventId)) {
                 JLabel blankLine = new JLabel(" ");
                 schedulePanel.add(blankLine);
 
+                // イベント情報を表示するパネルを作成
                 JPanel infoPanel = new JPanel();
                 infoPanel.setOpaque(false);
                 infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
@@ -70,6 +88,7 @@ public class EventPanel extends AbstractSchedulePanel {
                 infoPanel.add(descLabel);
                 infoPanel.add(ruleLabel);
 
+                // ステージ情報の設定
                 JPanel stageSetPanel = new StageSetPanel();
 
                 for (JsonNode stages : jsonNode.get("stages")) {
@@ -86,7 +105,6 @@ public class EventPanel extends AbstractSchedulePanel {
 
                     stageSetPanel.add(stagePanel);
                 }
-
 
                 schedulePanel.add(infoPanel);
                 schedulePanel.add(stageSetPanel);

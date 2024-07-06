@@ -12,11 +12,26 @@ import java.util.*;
 
 import static schedule.SplaScheduleUtils.*;
 
-public class SalmonRunPanel extends AbstractSchedulePanel {
-    public SalmonRunPanel() {
+/**
+ * サーモンランのスケジュール情報を表示するパネルクラスです。
+ * このクラスは {@link AbstractMainPanel} を継承し、
+ * サーモンランのスケジュールを表示します。
+ *
+ * @see AbstractMainPanel
+ */
+public class SalmonRunMainPanel extends AbstractMainPanel {
+
+    /**
+     * コンストラクタ。
+     * スーパークラスのコンストラクタを呼び出し、パネルの初期化を行います。
+     */
+    public SalmonRunMainPanel() {
         super();
     }
 
+    /**
+     * サーモンランのスケジュールパネルを作成します。
+     */
     @Override
     public void createPanel() {
         SalmonRun salmonRun = new SalmonRun();
@@ -39,11 +54,13 @@ public class SalmonRunPanel extends AbstractSchedulePanel {
             JLabel stageNameLabel = new StageNameLabel(stageName);
             SRun_StageImageLabel stageImageLabel = new SRun_StageImageLabel(stageImage);
 
+            // ステージ情報の設定
             JPanel stagePanel = new StagePanel();
 
             stagePanel.add(stageNameLabel);
             stagePanel.add(stageImageLabel);
 
+            // 武器情報の設定
             JPanel weaponsPanel = new JPanel();
             weaponsPanel.setOpaque(false);
             weaponsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 0));
