@@ -52,7 +52,7 @@ public class SalmonRunMainPanel extends AbstractMainPanel {
 
             JLabel timeFrameLabel = new TimeFrameLabel(formattedTimeFrame);
             JLabel stageNameLabel = new StageNameLabel(stageName);
-            SRun_StageImageLabel stageImageLabel = new SRun_StageImageLabel(stageImage);
+            SRunStageImageLabel stageImageLabel = new SRunStageImageLabel(stageImage);
 
             // ステージ情報の設定
             JPanel stagePanel = new StagePanel();
