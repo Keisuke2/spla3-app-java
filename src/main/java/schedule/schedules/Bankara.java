@@ -5,23 +5,42 @@ import com.fasterxml.jackson.databind.node.*;
 import schedule.*;
 import schedule.data_src.*;
 
+/**
+ * バンカラマッチのスケジュールを管理するクラスです。
+ */
 public class Bankara {
-    private final GameMode mode;
-    private final String scheduleURL;
+    private final GameMode mode;  // ゲームモード（オープンまたはチャレンジ）
+    private final String scheduleURL;  // スケジュール取得用URL
 
+    /**
+     * バンカラマッチのインスタンスを作成します。
+     *
+     * @param isOpen オープンモードかどうかを指定します。
+     */
     public Bankara(boolean isOpen) {
         this.mode = isOpen ? GameMode.OPEN : GameMode.CHALLENGE;
-        scheduleURL = isOpen ? ScheduleApi.bankaraOpen : ScheduleApi.bankaraChallenge;
+        this.scheduleURL = isOpen ? ScheduleApi.bankaraOpen : ScheduleApi.bankaraChallenge;
     }
 
+    /**
+     * ゲームモードの表示名を取得します。
+     * @return ゲームモードの表示名
+     */
     public String getMode() {
         return mode.getDisplayName();
     }
 
+    /**
+     * スケジュール取得用のURLを取得します。
+     * @return スケジュール取得用URL
+     */
     public String getScheduleURL() {
         return scheduleURL;
     }
 
+    /**
+     * バンカラマッチのスケジュールをCLIで表示します。
+     */
     public void showSchedule() {
         // JSONをURLから取得
         ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(this.scheduleURL);

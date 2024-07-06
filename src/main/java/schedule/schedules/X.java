@@ -5,17 +5,31 @@ import com.fasterxml.jackson.databind.node.*;
 import schedule.*;
 import schedule.data_src.*;
 
+/**
+ * Xマッチのスケジュールを管理するクラスです。
+ */
 public class X {
-    private final String scheduleURL;
+    private final String scheduleURL;  // スケジュール取得用URL
 
+    /**
+     * Xマッチのインスタンスを作成します。
+     */
     public X() {
         this.scheduleURL = ScheduleApi.x;
     }
 
+    /**
+     * スケジュール取得用のURLを取得します。
+     *
+     * @return スケジュール取得用URL
+     */
     public String getScheduleURL() {
         return scheduleURL;
     }
 
+    /**
+     * Xマッチのスケジュールを表示します。
+     */
     public void showSchedule() {
         // JSONをURLから取得
         ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(this.scheduleURL);

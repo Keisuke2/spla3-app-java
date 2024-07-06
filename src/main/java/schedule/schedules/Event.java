@@ -5,17 +5,31 @@ import com.fasterxml.jackson.databind.node.*;
 import schedule.*;
 import schedule.data_src.*;
 
+/**
+ * イベントのスケジュールを管理するクラスです。
+ */
 public class Event {
-    private final String scheduleURL;
+    private final String scheduleURL;  // スケジュール取得用URL
 
+    /**
+     * イベントのインスタンスを作成します。
+     */
     public Event() {
         this.scheduleURL = ScheduleApi.event;
     }
 
+    /**
+     * スケジュール取得用のURLを取得します。
+     *
+     * @return スケジュール取得用URL
+     */
     public String getScheduleURL() {
         return scheduleURL;
     }
 
+    /**
+     * イベントのスケジュールをCLIで表示します。
+     */
     public void showSchedule() {
         // JSONをURLから取得
         ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(this.scheduleURL);
@@ -36,14 +50,13 @@ public class Event {
                 String titleName = eventNode.get("name").asText();
                 String descName = eventNode.get("desc").asText();
 
-                System.out.println(titleName);
-                System.out.println(descName);
+                System.out.println("イベント名: " + titleName);
+                System.out.println("説明: " + descName);
 
                 if (stagesNode != null && stagesNode.isArray()) {
                     // 各ステージについてループ
                     for (JsonNode stageNode : stagesNode) {
                         String stageName = stageNode.get("name").asText();
-
                         System.out.println("ステージ名: " + stageName);
                     }
                 }

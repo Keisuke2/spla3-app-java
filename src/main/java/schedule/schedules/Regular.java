@@ -5,17 +5,31 @@ import com.fasterxml.jackson.databind.node.*;
 import schedule.*;
 import schedule.data_src.*;
 
+/**
+ * レギュラーマッチのスケジュールを管理するクラスです。
+ */
 public class Regular {
-    private final String scheduleURL;
+    private final String scheduleURL;  // スケジュール取得用URL
 
+    /**
+     * レギュラーマッチのインスタンスを作成します。
+     */
     public Regular() {
         this.scheduleURL = ScheduleApi.regular;
     }
 
+    /**
+     * スケジュール取得用のURLを取得します。
+     *
+     * @return スケジュール取得用URL
+     */
     public String getScheduleURL() {
         return scheduleURL;
     }
 
+    /**
+     * レギュラーマッチのスケジュールを表示します。
+     */
     public void showSchedule() {
         // JSONをURLから取得
         ArrayNode arrayNode = SplaScheduleUtils.getArrayNode(this.scheduleURL);
