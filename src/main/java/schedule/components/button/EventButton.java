@@ -14,6 +14,6 @@ public class EventButton extends HeaderButton {
      * イベントマッチボタンの画像をボタンに設定します。
      */
     public EventButton() {
-        super(ButtonImage.event);
+        super(ButtonIconPaths.event);
     }
 }

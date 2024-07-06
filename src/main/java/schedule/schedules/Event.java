@@ -15,7 +15,7 @@ public class Event {
      * イベントのインスタンスを作成します。
      */
     public Event() {
-        this.scheduleURL = ScheduleApi.event;
+        this.scheduleURL = ScheduleApiEndpoints.event;
     }
 
     /**

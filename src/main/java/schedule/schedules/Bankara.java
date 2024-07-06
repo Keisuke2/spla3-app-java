@@ -19,7 +19,7 @@ public class Bankara {
      */
     public Bankara(boolean isOpen) {
         this.mode = isOpen ? GameMode.OPEN : GameMode.CHALLENGE;
-        this.scheduleURL = isOpen ? ScheduleApi.bankaraOpen : ScheduleApi.bankaraChallenge;
+        this.scheduleURL = isOpen ? ScheduleApiEndpoints.bankaraOpen : ScheduleApiEndpoints.bankaraChallenge;
     }
 
     /**

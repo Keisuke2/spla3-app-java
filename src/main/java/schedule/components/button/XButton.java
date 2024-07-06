@@ -15,6 +15,6 @@ public class XButton extends HeaderButton {
      * Xマッチの画像をボタンに設定します。
      */
     public XButton() {
-        super(ButtonImage.x);
+        super(ButtonIconPaths.x);
     }
 }

@@ -15,6 +15,6 @@ public class BankaraButton extends HeaderButton {
      * バンカラマッチの画像をボタンに設定します。
      */
     public BankaraButton() {
-        super(ButtonImage.bankara);
+        super(ButtonIconPaths.bankara);
     }
 }

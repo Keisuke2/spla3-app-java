@@ -15,7 +15,7 @@ public class Regular {
      * レギュラーマッチのインスタンスを作成します。
      */
     public Regular() {
-        this.scheduleURL = ScheduleApi.regular;
+        this.scheduleURL = ScheduleApiEndpoints.regular;
     }
 
     /**

@@ -15,7 +15,7 @@ public class SalmonRun {
      * サーモンランのインスタンスを作成します。
      */
     public SalmonRun() {
-        this.scheduleURL = ScheduleApi.salmonRun;
+        this.scheduleURL = ScheduleApiEndpoints.salmonRun;
     }
 
     /**

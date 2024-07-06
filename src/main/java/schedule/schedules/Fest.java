@@ -19,7 +19,7 @@ public class Fest {
      */
     public Fest(boolean isOpen) {
         this.mode = isOpen ? GameMode.OPEN : GameMode.CHALLENGE;
-        this.scheduleURL = isOpen ? ScheduleApi.festOpen : ScheduleApi.festChallenge;
+        this.scheduleURL = isOpen ? ScheduleApiEndpoints.festOpen : ScheduleApiEndpoints.festChallenge;
     }
 
     /**

@@ -15,6 +15,6 @@ public class SalmonRunButton extends HeaderButton {
      * サーモンランの画像をボタンに設定します。
      */
     public SalmonRunButton() {
-        super(ButtonImage.salmonrun);
+        super(ButtonIconPaths.salmonrun);
     }
 }

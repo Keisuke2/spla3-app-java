@@ -15,6 +15,6 @@ public class FestButton extends HeaderButton {
      * フェスマッチの画像をボタンに設定します。
      */
     public FestButton() {
-        super(ButtonImage.fest);
+        super(ButtonIconPaths.fest);
     }
 }

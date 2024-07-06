@@ -15,7 +15,7 @@ public class X {
      * Xマッチのインスタンスを作成します。
      */
     public X() {
-        this.scheduleURL = ScheduleApi.x;
+        this.scheduleURL = ScheduleApiEndpoints.x;
     }
 
     /**

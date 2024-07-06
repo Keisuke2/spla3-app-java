@@ -15,6 +15,6 @@ public class RegularButton extends HeaderButton {
      * レギュラーマッチの画像をボタンに設定します。
      */
     public RegularButton() {
-        super(ButtonImage.regular);
+        super(ButtonIconPaths.regular);
     }
 }
