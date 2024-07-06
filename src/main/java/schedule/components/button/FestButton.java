@@ -4,11 +4,11 @@ import schedule.data_src.*;
 
 /**
  * フェスマッチを表すボタンのコンポーネントを作成するクラスです。
- * このクラスは {@link RuleButton} を拡張し、フェスマッチのイメージを持つボタンを提供します。
+ * このクラスは {@link HeaderButton} を拡張し、フェスマッチのイメージを持つボタンを提供します。
  *
- * @see RuleButton
+ * @see HeaderButton
  */
-public class FestButton extends RuleButton {
+public class FestButton extends HeaderButton {
 
     /**
      * コンストラクタ。

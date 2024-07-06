@@ -12,7 +12,7 @@ import java.io.*;
  *
  * @see JButton
  */
-public class RuleButton extends JButton {
+public class HeaderButton extends JButton {
     protected String resourcePath;
 
     /**
@@ -21,7 +21,7 @@ public class RuleButton extends JButton {
      *
      * @param resourcePath ボタンのアイコン画像のパス
      */
-    public RuleButton(String resourcePath) {
+    public HeaderButton(String resourcePath) {
         super((Icon) null);
         int width = 55;
         int height = 55;

@@ -4,11 +4,11 @@ import schedule.data_src.*;
 
 /**
  * サーモンランを表すボタンのコンポーネントを作成するクラスです。
- * このクラスは {@link RuleButton} を拡張し、サーモンランのイメージを持つボタンを提供します。
+ * このクラスは {@link HeaderButton} を拡張し、サーモンランのイメージを持つボタンを提供します。
  *
- * @see RuleButton
+ * @see HeaderButton
  */
-public class SalmonRunButton extends RuleButton {
+public class SalmonRunButton extends HeaderButton {
 
     /**
      * コンストラクタ。

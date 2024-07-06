@@ -4,11 +4,11 @@ import schedule.data_src.*;
 
 /**
  * レギュラーマッチを表すボタンのコンポーネントを作成するクラスです。
- * このクラスは {@link RuleButton} を拡張し、レギュラーマッチのイメージを持つボタンを提供します。
+ * このクラスは {@link HeaderButton} を拡張し、レギュラーマッチのイメージを持つボタンを提供します。
  *
- * @see RuleButton
+ * @see HeaderButton
  */
-public class RegularButton extends RuleButton {
+public class RegularButton extends HeaderButton {
 
     /**
      * コンストラクタ。

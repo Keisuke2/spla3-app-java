@@ -4,11 +4,11 @@ import schedule.data_src.*;
 
 /**
  * バンカラマッチを表すボタンのコンポーネントを作成するクラスです。
- * このクラスは {@link RuleButton} を拡張し、バンカラマッチのイメージを持つボタンを提供します。
+ * このクラスは {@link HeaderButton} を拡張し、バンカラマッチのイメージを持つボタンを提供します。
  *
- * @see RuleButton
+ * @see HeaderButton
  */
-public class BankaraButton extends RuleButton {
+public class BankaraButton extends HeaderButton {
 
     /**
      * コンストラクタ。

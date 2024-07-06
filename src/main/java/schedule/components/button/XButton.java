@@ -4,11 +4,11 @@ import schedule.data_src.*;
 
 /**
  * Xマッチを表すボタンのコンポーネントを作成するクラスです。
- * このクラスは {@link RuleButton} を拡張し、Xマッチのイメージを持つボタンを提供します。
+ * このクラスは {@link HeaderButton} を拡張し、Xマッチのイメージを持つボタンを提供します。
  *
- * @see RuleButton
+ * @see HeaderButton
  */
-public class XButton extends RuleButton {
+public class XButton extends HeaderButton {
 
     /**
      * コンストラクタ。
